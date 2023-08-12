@@ -13,7 +13,12 @@ namespace HyperCasualRunner.Input.Model
     {
         #region Public Methods
 
-        public Vector2 OnPrimaryTouchPositionInScreenSpace(InputAction.CallbackContext context)
+        public Vector2 OnContinuesPrimaryTouchPositionInScreenSpace(InputAction.CallbackContext context)
+        {
+            return context.ReadValue<Vector2>();
+        }
+
+        public Vector2 OnFirstPrimaryFingerPosition(InputAction.CallbackContext context)
         {
             return context.ReadValue<Vector2>();
         }

@@ -1,7 +1,4 @@
-
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace HyperCasualRunner.Player.MVP.Model
 {
@@ -9,10 +6,11 @@ namespace HyperCasualRunner.Player.MVP.Model
     {
         #region Private Fields
 
-        private Camera _mainCamera;
-        private float _horizontalShift = 6.0f;
+        private float _runnersSlideSpeed = 6.0f;
         private float _forwardShift = 6.0f;
+        private Transform _runnersParent;
         private Transform _playerTransform;
+        private Vector2 _firstPrimaryTouch;
 
         #endregion Private Fields
 
@@ -20,10 +18,10 @@ namespace HyperCasualRunner.Player.MVP.Model
 
         #region Intialization
 
-        public PlayerModel(Camera mainCamera, Transform playerTransform)
+        public PlayerModel(Transform playerTransform, Transform runnersParent)
         {
-            _mainCamera = mainCamera;
             _playerTransform = playerTransform;
+            _runnersParent = runnersParent;
         }
 
         #endregion Intialization
@@ -32,16 +30,24 @@ namespace HyperCasualRunner.Player.MVP.Model
 
         #region Public Methods
 
-        public float UpdatePlayerPosition(Vector2 touchPosition)
+        public float UpdateRunnersParentLocalPosition(Vector2 touchPosition, float screenWidth)
         {
-            return _mainCamera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, _mainCamera.nearClipPlane)).x * _horizontalShift;
+            float xScreenDiff = touchPosition.x - _firstPrimaryTouch.x;
+            xScreenDiff /= screenWidth;
+            xScreenDiff *= _runnersSlideSpeed;
+            return xScreenDiff;
         }
 
-        public Vector3 MoveUserForward()
+        public Vector3 MovePlayerForward()
         {
             Vector3 currentPosition = _playerTransform.position;
             currentPosition.z += _forwardShift * Time.deltaTime;
             return currentPosition;
+        }
+
+        public void FirstPrimaryTouchPosition(Vector2 currentFingerPosition)
+        {
+            _firstPrimaryTouch = currentFingerPosition;
         }
 
         #endregion Public Methods

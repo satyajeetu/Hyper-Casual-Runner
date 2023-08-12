@@ -6,9 +6,9 @@
             "id": "4781dae4-208e-4df8-b35e-fb6c6abc3bab",
             "actions": [
                 {
-                    "name": "PrimaryTouchPositionInScreenSpace",
+                    "name": "PrimaryTouch",
                     "type": "Value",
-                    "id": "d9ea2453-dca6-4026-bcb2-1668f75566e5",
+                    "id": "0ae18541-bd0c-47d3-9152-2692692b45b0",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -18,12 +18,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "fd8b2ec9-66b3-418f-a623-daf713b11248",
+                    "id": "a3fc9e2f-7d54-4292-a01f-0e86e38d3a87",
                     "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrimaryTouchPositionInScreenSpace",
+                    "action": "PrimaryTouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

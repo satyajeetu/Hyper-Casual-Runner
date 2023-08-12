@@ -29,14 +29,19 @@ namespace HyperCasualRunner.Player.MVP.Presenter
 
         #region Public Methods
 
-        public void PrimaryFingerOnScreen(Vector2 currentFingerPosition)
+        public void PrimaryFingerOnScreen(Vector2 currentFingerPosition, float screenWidth)
         {
-            _playerView.UpdatePlayerPosition(_playerModel.UpdatePlayerPosition(currentFingerPosition));
+            _playerView.UpdateRunnersParentLocalPosition(_playerModel.UpdateRunnersParentLocalPosition(currentFingerPosition, screenWidth));
+        }
+
+        public void FirstPrimaryTouchOnScreen(Vector2 currentFingerPosition)
+        {
+            _playerModel.FirstPrimaryTouchPosition(currentFingerPosition);
         }
 
         public void CustomUpdate()
         {
-            MoveForward();
+            MovePlayerForward();
         }
 
         #endregion Public Methods
@@ -45,9 +50,9 @@ namespace HyperCasualRunner.Player.MVP.Presenter
 
         #region Private Methods
 
-        private void MoveForward()
+        private void MovePlayerForward()
         {
-            _playerView.MoveForward(_playerModel.MoveUserForward());
+            _playerView.MovePlayerForward(_playerModel.MovePlayerForward());
         }
 
         #endregion Private Methods

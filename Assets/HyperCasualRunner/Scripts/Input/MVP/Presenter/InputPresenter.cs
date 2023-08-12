@@ -24,7 +24,8 @@ namespace HyperCasualRunner.Input.Presenter
     {
         #region Public Properties
 
-        public event PrimaryTouchEventHandler PrimaryFingerPosition;
+        public event PrimaryTouchEventHandler ContinuesPrimaryFingerPosition;
+        public event PrimaryTouchEventHandler FirstPrimaryFingerPosition;
 
         #endregion Public Properties
 
@@ -53,14 +54,28 @@ namespace HyperCasualRunner.Input.Presenter
 
         #region Public Methods
 
-        public void OnPrimaryTouchPositionInScreenSpace(InputAction.CallbackContext context)
+        public void OnContinuesPrimaryTouchPositionInScreenSpace(InputAction.CallbackContext context)
         {
-            Vector2 value = _inputModel.OnPrimaryTouchPositionInScreenSpace(context);
-            _inputView.Log(value.ToString());
+            Vector2 value = _inputModel.OnContinuesPrimaryTouchPositionInScreenSpace(context);
 
-            PrimaryFingerPosition?.Invoke(value);
+#if VERBOSE_INPUT
+            _inputView.Log(value.ToString());
+#endif
+
+            ContinuesPrimaryFingerPosition?.Invoke(value);
         }
 
-        #endregion Public Methods
+        public void OnFirstPrimaryFingerPosition(InputAction.CallbackContext context)
+        {
+            Vector2 value = _inputModel.OnFirstPrimaryFingerPosition(context);
+
+#if VERBOSE_INPUT
+            _inputView.Log(value.ToString() + "First");
+#endif
+
+            FirstPrimaryFingerPosition?.Invoke(value);
+        }
+
+#endregion Public Methods
     }
 }
