@@ -1,4 +1,5 @@
 using UnityEngine;
+using HyperCasualRunner.Components;
 
 namespace HyperCasualRunner.Player.MVP.Model
 {
@@ -48,6 +49,19 @@ namespace HyperCasualRunner.Player.MVP.Model
         public void FirstPrimaryTouchPosition(Vector2 currentFingerPosition)
         {
             _firstPrimaryTouch = currentFingerPosition;
+        }
+
+        public void PlaceRunners(CrowdSystem crowdSystem)
+        {
+            crowdSystem.PlaceRunners(_runnersParent);
+        }
+
+        public void CreateRunners(int count, GameObject runnerPrefab)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                GameObject.Instantiate(runnerPrefab, _runnersParent);
+            }
         }
 
         #endregion Public Methods

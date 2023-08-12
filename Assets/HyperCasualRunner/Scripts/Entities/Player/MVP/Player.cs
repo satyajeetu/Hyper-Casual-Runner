@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 using HyperCasualRunner.Player.MVP.Model;
 using HyperCasualRunner.Player.MVP.View;
 using HyperCasualRunner.Player.MVP.Presenter;
 using HyperCasualRunner.Input;
-using UnityEngine.Assertions;
-using System;
+using HyperCasualRunner.GameCommands;
+using HyperCasualRunner.Components;
 
 namespace HyperCasualRunner.Player.MVP
 {
@@ -20,6 +21,8 @@ namespace HyperCasualRunner.Player.MVP
         private PlayerPresenter _playerPresenter;
         private PlayerModel _playerModel;
         private InputMVP _touchInput;
+        private CrowdSystem _crowdSystem;
+        private Commands _commands;
 
         #endregion Private Fields
 
@@ -35,22 +38,27 @@ namespace HyperCasualRunner.Player.MVP
             _playerView.Intialize(transform, _runnersParent);
 
             _playerModel = new PlayerModel(transform, _runnersParent);
-            _playerPresenter = new PlayerPresenter(_playerModel, _playerView);
             _touchInput = InputMVP.Instance;
+            _commands = Commands.Instance;
+            _crowdSystem = new CrowdSystem(_runnersParent, _playerView.CrowdRadius, _playerView.CrowdAngle);
+            _playerPresenter = new PlayerPresenter(_playerModel, _playerView, _crowdSystem);
         }
 
         private void OnEnable()
         {
             _touchInput.ContinuesPrimaryFingerPosition += InputMVP_OnPrimaryFingerPosition;
             _touchInput.FirstPrimaryFingerPosition += InputMVP_OnFirstPrimaryFingerPosition;
+
+            _commands.StartGameplay.AddListener(Commands_StartGamePlay);
         }
 
         private void OnDisable()
         {
             _touchInput.ContinuesPrimaryFingerPosition -= InputMVP_OnPrimaryFingerPosition;
             _touchInput.FirstPrimaryFingerPosition -= InputMVP_OnFirstPrimaryFingerPosition;
-        }
 
+            _commands.StartGameplay.RemoveListener(Commands_StartGamePlay);
+        }
 
         private void Update()
         {
@@ -82,6 +90,11 @@ namespace HyperCasualRunner.Player.MVP
         private void InputMVP_OnFirstPrimaryFingerPosition(Vector2 currentFingerPosition)
         {
             _playerPresenter.FirstPrimaryTouchOnScreen(currentFingerPosition);
+        }
+
+        private void Commands_StartGamePlay()
+        {
+            _playerPresenter.StartGamePlay();
         }
 
         #endregion Event Handlers
