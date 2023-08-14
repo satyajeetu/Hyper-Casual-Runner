@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HyperCasualRunner.Components
+namespace HyperCasualRunner.ComponentsSpace
 {
     public class CrowdSystem
     {

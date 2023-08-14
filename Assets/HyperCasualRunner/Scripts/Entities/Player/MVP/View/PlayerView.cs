@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace HyperCasualRunner.Player.MVP.View
+namespace HyperCasualRunner.PlayerSpace.MVP.View
 {
     public class PlayerView : MonoBehaviour
     {

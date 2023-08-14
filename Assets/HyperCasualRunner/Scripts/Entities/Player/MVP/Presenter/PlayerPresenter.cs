@@ -1,10 +1,10 @@
 using UnityEngine;
 
-using HyperCasualRunner.Player.MVP.Model;
-using HyperCasualRunner.Player.MVP.View;
-using HyperCasualRunner.Components;
+using HyperCasualRunner.PlayerSpace.MVP.Model;
+using HyperCasualRunner.PlayerSpace.MVP.View;
+using HyperCasualRunner.ComponentsSpace;
 
-namespace HyperCasualRunner.Player.MVP.Presenter
+namespace HyperCasualRunner.PlayerSpace.MVP.Presenter
 {
     public class PlayerPresenter
     {

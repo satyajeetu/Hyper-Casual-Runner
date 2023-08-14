@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-using HyperCasualRunner.Player.MVP.Model;
-using HyperCasualRunner.Player.MVP.View;
-using HyperCasualRunner.Player.MVP.Presenter;
-using HyperCasualRunner.Input;
-using HyperCasualRunner.GameCommands;
-using HyperCasualRunner.Components;
+using HyperCasualRunner.PlayerSpace.MVP.Model;
+using HyperCasualRunner.PlayerSpace.MVP.View;
+using HyperCasualRunner.PlayerSpace.MVP.Presenter;
+using HyperCasualRunner.InputSpace;
+using HyperCasualRunner.CommandsSpace;
+using HyperCasualRunner.ComponentsSpace;
 
-namespace HyperCasualRunner.Player.MVP
+namespace HyperCasualRunner.PlayerSpace.MVP
 {
     public class Player : MonoBehaviour
     {
@@ -49,7 +49,7 @@ namespace HyperCasualRunner.Player.MVP
             _touchInput.ContinuesPrimaryFingerPosition += InputMVP_OnPrimaryFingerPosition;
             _touchInput.FirstPrimaryFingerPosition += InputMVP_OnFirstPrimaryFingerPosition;
 
-            _commands.StartGameplay.AddListener(Commands_StartGamePlay);
+            _commands.StartGameplay.AddListener(Commands_OnStartGamePlay);
         }
 
         private void OnDisable()
@@ -57,7 +57,7 @@ namespace HyperCasualRunner.Player.MVP
             _touchInput.ContinuesPrimaryFingerPosition -= InputMVP_OnPrimaryFingerPosition;
             _touchInput.FirstPrimaryFingerPosition -= InputMVP_OnFirstPrimaryFingerPosition;
 
-            _commands.StartGameplay.RemoveListener(Commands_StartGamePlay);
+            _commands.StartGameplay.RemoveListener(Commands_OnStartGamePlay);
         }
 
         private void Update()
@@ -92,7 +92,7 @@ namespace HyperCasualRunner.Player.MVP
             _playerPresenter.FirstPrimaryTouchOnScreen(currentFingerPosition);
         }
 
-        private void Commands_StartGamePlay()
+        private void Commands_OnStartGamePlay()
         {
             _playerPresenter.StartGamePlay();
         }

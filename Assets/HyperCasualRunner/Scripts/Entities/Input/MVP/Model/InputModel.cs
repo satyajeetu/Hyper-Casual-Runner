@@ -7,7 +7,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace HyperCasualRunner.Input.Model
+namespace HyperCasualRunner.InputSpace.Model
 {
     public class InputModel
     {

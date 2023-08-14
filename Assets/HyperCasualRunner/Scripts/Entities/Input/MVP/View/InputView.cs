@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-namespace HyperCasualRunner.Input.View
+namespace HyperCasualRunner.InputSpace.View
 {
     public class InputView
     {

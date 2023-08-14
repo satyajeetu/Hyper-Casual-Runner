@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using HyperCasualRunner.Input.Presenter;
+using HyperCasualRunner.InputSpace.Presenter;
 using Custom.Generics;
 
-namespace HyperCasualRunner.Input
+namespace HyperCasualRunner.InputSpace
 {
     [DefaultExecutionOrder(-1)]
     public class InputMVP : Singleton<InputMVP>

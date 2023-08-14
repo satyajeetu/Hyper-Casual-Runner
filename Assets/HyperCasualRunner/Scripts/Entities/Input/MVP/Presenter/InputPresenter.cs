@@ -7,10 +7,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using HyperCasualRunner.Input.Model;
-using HyperCasualRunner.Input.View;
+using HyperCasualRunner.InputSpace.Model;
+using HyperCasualRunner.InputSpace.View;
 
-namespace HyperCasualRunner.Input.Presenter
+namespace HyperCasualRunner.InputSpace.Presenter
 {
     #region Namespace Specific Properties
 

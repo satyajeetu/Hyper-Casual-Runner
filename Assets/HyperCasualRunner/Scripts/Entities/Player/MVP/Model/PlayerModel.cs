@@ -1,7 +1,13 @@
-using UnityEngine;
-using HyperCasualRunner.Components;
+#region Defines
 
-namespace HyperCasualRunner.Player.MVP.Model
+// #define VERBOSE_PLAYER
+
+#endregion Defines
+
+using UnityEngine;
+using HyperCasualRunner.ComponentsSpace;
+
+namespace HyperCasualRunner.PlayerSpace.MVP.Model
 {
     public class PlayerModel
     {
@@ -61,6 +67,10 @@ namespace HyperCasualRunner.Player.MVP.Model
             for (int i = 0; i < count; i++)
             {
                 GameObject.Instantiate(runnerPrefab, _runnersParent);
+
+#if VERBOSE_PLAYER
+                Debug.Log("runner created");
+#endif // VERBOSE_PLAYER
             }
         }
 
