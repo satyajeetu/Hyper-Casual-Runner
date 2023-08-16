@@ -1738,9 +1738,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4096031473874530153}
   - component: {fileID: 1804226996053381068}
+  - component: {fileID: 5138459286497598247}
   m_Layer: 0
   m_Name: Runner
-  m_TagString: Untagged
+  m_TagString: RUNNER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1783,6 +1784,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &5138459286497598247
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986864153356808293}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.53926265, y: 1.3364708, z: 0.6591196}
+  m_Center: {x: -0.01161778, y: 0.66058695, z: 0.052279875}
 --- !u!1 &8192384428361456738
 GameObject:
   m_ObjectHideFlags: 0
